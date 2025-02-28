@@ -1,0 +1,34 @@
+<div>
+    <div class="submit-form">
+      @if (!submitted) {
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          [(ngModel)]="task.taskname"
+          name="title"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="task.description"
+          name="description"
+        />
+      </div>
+  
+      <button (click)="saveTask()" class="btn btn-success">Save</button>
+      } @else {
+      <h4>Task was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newTask()">Add Task</button>
+      }
+    </div>
+  </div>
+  

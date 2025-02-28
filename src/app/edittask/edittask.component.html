@@ -1,0 +1,49 @@
+<div>
+    <div class="submit-form">
+      <ng-container *ngIf="!submitted">
+        <form (ngSubmit)="updateTask()" #taskForm="ngForm">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              required
+              [(ngModel)]="task.taskname"
+              name="taskname"
+              #taskname="ngModel"
+              [class.is-invalid]="taskname.invalid && taskname.touched"
+            />
+            <div *ngIf="taskname.invalid && taskname.touched" class="invalid-feedback">
+              Title is required.
+            </div>
+          </div>
+    
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              required
+              [(ngModel)]="task.description"
+              name="description"
+              #description="ngModel"
+              [class.is-invalid]="description.invalid && description.touched"
+            />
+            <div *ngIf="description.invalid && description.touched" class="invalid-feedback">
+              Description is required.
+            </div>
+          </div>
+    
+          <button type="submit" [disabled]="taskForm.invalid" class="btn btn-success">Update Task</button>
+        </form>
+      </ng-container>
+  
+      <ng-container *ngIf="submitted">
+        <h4>Task was updated successfully!</h4>
+        <button class="btn btn-primary" (click)="newTask()">Update Another Task</button>
+      </ng-container>
+    </div>
+  </div>
+  
